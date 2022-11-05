@@ -79,18 +79,18 @@ bool ReadFile(const std::string& filePath, void* data, size_t size)
 	return false;
 }
 
-bool ReplaceStr(std::string& str, const std::string& from, const std::string& to)
+bool ReplaceStr(std::wstring& str, const std::wstring& from, const std::string& to)
 {
 	size_t start_pos = str.find(from);
-	if (start_pos == std::string::npos)
+	if (start_pos == std::wstring::npos)
 		return false;
-	str.replace(start_pos, from.length(), to);
+	str.replace(start_pos, from.length(), std::wstring(to.begin(), to.end()));
 	return true;
 }
 
 
 // main stuff
-char gIpBuffer[256]{};
+wchar_t gIpBuffer[512]{0};
 paf::View* xmb_plugin{};
 paf::View* system_plugin{};
 paf::PhWidget* page_notification{};
@@ -98,21 +98,22 @@ paf::PhWidget* page_notification{};
 bool LoadIpText()
 {
 	std::string ipTextPath = GetCurrentDir() + "ip_text.txt";
+	char fileBuffer[512]{0};
 
-	if (!FileExist(ipTextPath))
+	if (!FileExist(ipTextPath) || !ReadFile(ipTextPath, fileBuffer, sizeof(fileBuffer)))
 		return false;
 
-	stdc::memset(gIpBuffer, 0, sizeof(gIpBuffer));
-	return ReadFile(ipTextPath, gIpBuffer, sizeof(gIpBuffer));
+	stdc::swprintf(gIpBuffer, 512, L"%s", fileBuffer);
+	return true;
 }
 
-std::string GetText()
+std::wstring GetText()
 {
 	char ip[16];
 	netctl::netctl_main_9A528B81(16, ip);
 
-	std::string text = gIpBuffer;
-	ReplaceStr(text, "%d.%d.%d.%d", ip[0] ? ip : "0.0.0.0");
+	std::wstring text(gIpBuffer);
+	ReplaceStr(text, L"%d.%d.%d.%d", ip[0] ? ip : "0.0.0.0");
 	return text;
 }
 
@@ -125,8 +126,6 @@ void CreateText()
 
 	if (ip_text)
 		return;
-
-
 
 	ip_text = new paf::PhText(page_notification, nullptr);
 
@@ -155,10 +154,7 @@ int pafWidgetDrawThis_Hook(paf::PhWidget* _this, unsigned int r4, bool r5)
 		ip_text->m_Data.metaAlpha = xmb_plugin ? 1.f : 0.f;
 
 		if (ip_text->m_Data.metaAlpha > 0.f)
-		{
-			std::string text = GetText();
-			ip_text->SetText(std::wstring(text.begin(), text.end()), 0);
-		}
+			ip_text->SetText(GetText(), 0);
 	}
 
 	return pafWidgetDrawThis_Detour->GetOriginal<int>(_this, r4, r5);
