@@ -38,13 +38,15 @@ extern "C"
 
 			while (gRunning)
 			{
+				// Retrieve views and widgets
 				xmb_plugin = paf::View::Find("xmb_plugin");
 				system_plugin = paf::View::Find("system_plugin");
+				page_xmb_indicator = xmb_plugin ? xmb_plugin->FindWidget("page_xmb_indicator") : nullptr;
 				page_notification = system_plugin ? system_plugin->FindWidget("page_notification") : nullptr;
 
-				if (page_notification && 
-					page_notification->IsAttached())
-					CreateText();
+
+				if (CanCreateIpText())
+					CreateIpText();
 
 				Timer::Sleep(500);
 			}

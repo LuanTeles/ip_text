@@ -90,9 +90,11 @@ bool ReplaceStr(std::wstring& str, const std::wstring& from, const std::string& 
 
 
 // main stuff
+bool gIsDebugXmbPlugin{ false };
 wchar_t gIpBuffer[512]{0};
 paf::View* xmb_plugin{};
 paf::View* system_plugin{};
+paf::PhWidget* page_xmb_indicator{};
 paf::PhWidget* page_notification{};
 
 bool LoadIpText()
@@ -103,8 +105,34 @@ bool LoadIpText()
 	if (!FileExist(ipTextPath) || !ReadFile(ipTextPath, fileBuffer, sizeof(fileBuffer)))
 		return false;
 
+	// Not sure how but it converts utf8 chars
 	stdc::swprintf(gIpBuffer, 512, L"%s", fileBuffer);
+
+	// If ip_text already exist then we usin the dex/deh xmb_plugin.sprx
+	system_plugin = paf::View::Find("system_plugin");
+	page_notification = system_plugin ? system_plugin->FindWidget("page_notification") : nullptr;
+
+	if (page_notification && page_notification->FindChild("ip_text", 0) != nullptr)
+		gIsDebugXmbPlugin = true;
+
 	return true;
+}
+
+bool CanCreateIpText()
+{
+	paf::PhWidget* parent = GetParent();
+	return parent ? parent->FindChild("ip_text", 0) == nullptr : false;
+}
+
+paf::PhWidget* GetParent()
+{
+	if (gIsDebugXmbPlugin)
+		return page_notification;
+
+	if (!page_xmb_indicator)
+		return nullptr;
+
+	return page_xmb_indicator->FindChild("indicator", 0);
 }
 
 std::wstring GetText()
@@ -117,17 +145,13 @@ std::wstring GetText()
 	return text;
 }
 
-void CreateText()
+void CreateIpText()
 {
-	if (!page_notification)
+	paf::PhWidget* parent = GetParent();
+	if (!parent)
 		return;
 
-	paf::PhText* ip_text = (paf::PhText*)page_notification->FindChild("ip_text", 0);
-
-	if (ip_text)
-		return;
-
-	ip_text = new paf::PhText(page_notification, nullptr);
+	paf::PhText* ip_text = new paf::PhText(parent, nullptr);
 
 	ip_text->SetName("ip_text")
 		.SetColor({ 1.f, 1.f, 1.f, 1.f })
@@ -151,9 +175,10 @@ int pafWidgetDrawThis_Hook(paf::PhWidget* _this, unsigned int r4, bool r5)
 	{
 		paf::PhText* ip_text = (paf::PhText*)_this;
 
-		ip_text->m_Data.metaAlpha = xmb_plugin ? 1.f : 0.f;
+		if (vshmain::GetCooperationMode() == vshmain::CooperationMode::Game)
+			ip_text->m_Data.metaAlpha = xmb_plugin ? 1.f : 0.f;
 
-		if (ip_text->m_Data.metaAlpha > 0.f)
+		if (ip_text->m_Data.metaAlpha > 0.1f)
 			ip_text->SetText(GetText(), 0);
 	}
 
