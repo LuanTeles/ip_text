@@ -1,0 +1,112 @@
+﻿Build started 15/06/2024 21:41:23.
+     1>Project "C:\Users\Luan\Desktop\xmb_plugin\xmb_plugin\xmb_plugin.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         xmb_plugin.cpp
+         ps3ppusnc.exe -DNDEBUG -D__PS3__ -DLIBNAME=cellPrx_xmb_plugin -DSTUBNAME=cellPrx_xmb_plugin_stub -o PS3_Release\xmb_plugin.o -c -Xdepmode=1 -MD -Xmserrors -IC:\Users\Luan\Desktop\xmb_plugin\vendor\vsh\include -I. -IC:/usr/local/cell\target\ppu\include -IC:/usr/local/cell\target\common\include -I"C:/usr/local/cell\host-win32\sn\ppu\include" -O2 -Xbranchless=2 -Xstd=cpp11 -Xc-=rtti C:\Users\Luan\Desktop\xmb_plugin\xmb_plugin\xmb_plugin.cpp
+     1>C:\Users\Luan\Desktop\xmb_plugin\vendor\vsh\include\vsh/xsetting.hpp(795,2): error 20: identifier "uint64_t" is undefined
+         
+     1>C:\Users\Luan\Desktop\xmb_plugin\vendor\vsh\include\vsh\xsetting.hpp(905): error 20: identifier "CDECL_BEGIN" is undefined
+         
+     1>C:\Users\Luan\Desktop\xmb_plugin\vendor\vsh\include\vsh\xsetting.hpp(906,19): error 65: expected a ";"
+         
+     1>C:\Users\Luan\Desktop\xmb_plugin\vendor\vsh\include\vsh\xsetting.hpp(927): error 78-D: this declaration has no storage class or type specifier
+         
+     1>C:/usr/local/cell\target\ppu\include/sys/integertypes.h(11): error 65: expected a ";"
+         
+     1>C:\usr\local\cell\target\ppu\include\sys\integertypes.h(33,13): error 136: namespace "std" has no member "uint8_t"
+         
+     1>C:\usr\local\cell\target\ppu\include\sys\integertypes.h(34,13): error 136: namespace "std" has no member "int16_t"
+         
+     1>C:\usr\local\cell\target\ppu\include\sys\integertypes.h(35,13): error 136: namespace "std" has no member "uint16_t"
+         
+     1>C:\usr\local\cell\target\ppu\include\sys\integertypes.h(36,13): error 136: namespace "std" has no member "int32_t"
+         
+     1>C:\usr\local\cell\target\ppu\include\sys\integertypes.h(37,13): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\ppu\include\sys\integertypes.h(38,13): error 136: namespace "std" has no member "int64_t"
+         
+     1>C:\usr\local\cell\target\ppu\include\sys\integertypes.h(39,13): error 136: namespace "std" has no member "uint64_t"
+         
+     1>C:\usr\local\cell\target\ppu\include\sys\integertypes.h(40,13): error 136: namespace "std" has no member "intptr_t"
+         
+     1>C:\usr\local\cell\target\ppu\include\sys\integertypes.h(41,13): error 136: namespace "std" has no member "uintptr_t"
+         
+     1>C:/usr/local/cell\target\common\include/sys/sys_types.h(19,15): error 136: namespace "std" has no member "uint64_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(20,15): error 136: namespace "std" has no member "uint64_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(35,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(36,15): error 136: namespace "std" has no member "int32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(41,15): error 136: namespace "std" has no member "int64_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(42,15): error 136: namespace "std" has no member "int64_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(52,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(55,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(58,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(64,15): error 136: namespace "std" has no member "uint64_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(67,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(72,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(73,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(74,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(75,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(76,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(78,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(79,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(80,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(81,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(83,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(84,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(85,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(86,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(92,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(93,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(94,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(99,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(100,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(105,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(119,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(125,15): error 136: namespace "std" has no member "int64_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(126,15): error 136: namespace "std" has no member "uint64_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(127,15): error 136: namespace "std" has no member "uint32_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(130,15): error 136: namespace "std" has no member "uint64_t"
+         
+     1>C:\usr\local\cell\target\common\include\sys\sys_types.h(135,15): error 136: namespace "std" has no member "uintptr_t"
+         
+         Error limit reached.
+         Compilation terminated.
+     1>Done Building Project "C:\Users\Luan\Desktop\xmb_plugin\xmb_plugin\xmb_plugin.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:02.16
